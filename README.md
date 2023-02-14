@@ -1,6 +1,13 @@
 # AmazonReviewGeneratorAPI
 Amazon Review Generator API
 
+## Table of Content
+- [Requirements](#requirements)
+- [Description](#description)
+- [Endpoints](#endpoints)
+- [Local Docker Deployment](#using-docker)
+- [API Link](#azure-api-link)
+
 
 ## Requirements
 .Net Core 6 - [Download Here](https://dotnet.microsoft.com/en-us/download)  
@@ -27,6 +34,7 @@ GET /api/generate => generates a random review defaulted to 50 words and returns
 
 
 ## Using Docker
+*NOTE: Docker needs too be installed on your machine.*
 1. Open command prompt and navigate to the project directory  
     e.g `C:\User\ProjectFolder\AmazonReviewGeneratorAPI`
 2. Run the following command to create a Docker Container  
@@ -36,3 +44,8 @@ GET /api/generate => generates a random review defaulted to 50 words and returns
 4. To see docker container run the following command  
     `docker ps -a`
 5. Open your browser and navigate to http://localhost:8080/api/generate
+
+
+## Azure API Link   
+Amazon Review Generator API has been deployed to 
+[Azure API Link](https://reviewgeneratorapi.azurewebsites.net/api/generate)
