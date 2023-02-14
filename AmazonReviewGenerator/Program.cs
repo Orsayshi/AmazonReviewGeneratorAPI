@@ -22,7 +22,7 @@ Dictionary<string, TextPattern> nGramDict = null;
 
 app.Lifetime.ApplicationStarted.Register(() =>
 {
-    var dataModel = initService.Init(new MLContext(), @"Data/Appliances.json", 1000);
+    var dataModel = initService.Init(new MLContext(), @"Data/Appliances.json", 5000);
     nGramDict = initService.GenerateDictTextPatter(dataModel);
 });
 
