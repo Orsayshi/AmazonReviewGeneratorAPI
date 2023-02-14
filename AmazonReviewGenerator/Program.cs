@@ -22,7 +22,7 @@ Dictionary<string, TextPattern> nGramDict = null;
 
 app.Lifetime.ApplicationStarted.Register(() =>
 {
-    var dataModel = initService.Init(new MLContext(), @"Data/Appliances.json", 1000);
+    var dataModel = initService.Init(new MLContext(), @"Data/Appliances.json", 5000);
     nGramDict = initService.GenerateDictTextPatter(dataModel);
 });
 
@@ -34,13 +34,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-//CreateDataModelFromJson dataModel = new CreateDataModelFromJson();
-//var model = dataModel.ConvertJsonReviewTextToReviewModel(@"Data/Appliances.json", 10000);
-
-//MLContext mLContext = new MLContext();
-//MLModel m = new MLModel(mLContext, model);
-//var nGramFeatures = m.TransformData();
 
 app.MapGet("/api/generate", () =>
 {
