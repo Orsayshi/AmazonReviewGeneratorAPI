@@ -6,12 +6,13 @@ namespace ReviewGenerator.Services
 {
     public class CreateDataModelFromJson
     {
+        public CreateDataModelFromJson() { }
         /// <summary>
-        /// 
+        /// Convert Json from file to Model
         /// </summary>
         /// <param name="path"></param>
         /// <param name="linesToRead"></param>
-        /// <returns></returns>
+        /// <returns>Returns a list of ReviewModel</returns>
         public List<ReviewModel> ConvertJsonReviewTextToReviewModel(string path, int linesToRead)
         {
             List<ReviewModel> model = new List<ReviewModel>();

@@ -5,15 +5,16 @@ using System.Linq;
 
 namespace ReviewGenerator.Services
 {
-    public static class CreateWordPossibilities
+    public class CreateWordPossibilities
     {
+        public CreateWordPossibilities() { }
         /// <summary>
         /// Generates a Dictionary where the key is a word 
         /// and the values are all the possible words that come after it.
         /// </summary>
         /// <param name="_transformedModel"></param>
         /// <returns>A dictionary with key value pairs for possible words that can be used to generate a review.</returns>
-        public static Dictionary<string, TextPattern> CreateDictWithWordPossibities(IDataView _transformedModel)
+        public Dictionary<string, TextPattern> CreateDictWithWordPossibities(IDataView _transformedModel)
         {
             Dictionary<string, TextPattern> wordPossibilities = new Dictionary<string, TextPattern>();
             VBuffer<ReadOnlyMemory<char>> slotNames = default;
@@ -54,7 +55,7 @@ namespace ReviewGenerator.Services
         /// <param name="key"></param>
         /// <param name="word"></param>
         /// <returns>True/False based on if value is already in the Keys value array</returns>
-        private static bool chkIfKeyValueContainsWord(Dictionary<string, TextPattern> words, string key ,string word)
+        private bool chkIfKeyValueContainsWord(Dictionary<string, TextPattern> words, string key ,string word)
         {
             if (words[key].Next.Contains(word))
             {

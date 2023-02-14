@@ -8,25 +8,18 @@ namespace ReviewGenerator.Services
 {
     public class MLModel
     {
-        private readonly MLContext _context;
-        private List<ReviewModel> _reviewModel;
-
-        public MLModel(MLContext mLContext, List<ReviewModel> reviews) 
-        {
-            this._context = mLContext;
-            this._reviewModel = reviews; 
-        }
+        public MLModel() { }
 
         /// <summary>
         /// Transform the data model 
         /// </summary>
         /// <returns>An IDataview of the transformed Data for the MLContext</returns>
-        public IDataView TransformData()
+        public IDataView TransformData(MLContext context, List<ReviewModel> reviewModel)
         {
-            var dataView = this.LoadModel();
-            var textPipeline = this._context.Transforms.Text.TokenizeIntoWords("Tokens", "reviewText")
-                .Append(this._context.Transforms.Conversion.MapValueToKey("Tokens"))
-                .Append(this._context.Transforms.Text.ProduceNgrams("NgramFeatures",
+            var dataView = this.LoadModel(context, reviewModel);
+            var textPipeline = context.Transforms.Text.TokenizeIntoWords("Tokens", "reviewText")
+                .Append(context.Transforms.Conversion.MapValueToKey("Tokens"))
+                .Append(context.Transforms.Text.ProduceNgrams("NgramFeatures",
                         "Tokens",
                         ngramLength: 3, // The length of the ngram e.g. The | hat | in 
                         useAllLengths: false,
@@ -42,9 +35,9 @@ namespace ReviewGenerator.Services
         /// Loads the data model for the MLContext
         /// </summary>
         /// <returns>IDataView</returns>
-        private IDataView LoadModel()
+        private IDataView LoadModel(MLContext context, List<ReviewModel> reviewModel)
         {
-            return this._context.Data.LoadFromEnumerable(this._reviewModel);
+            return context.Data.LoadFromEnumerable(reviewModel);
         }
     }
 }
