@@ -44,8 +44,3 @@ GET /api/generate => generates a random review defaulted to 50 words and returns
 4. To see docker container run the following command  
     `docker ps -a`
 5. Open your browser and navigate to http://localhost:8080/api/generate
-
-
-## Azure API Link   
-Amazon Review Generator API has been deployed to 
-[Azure API Link](https://reviewgeneratorapi.azurewebsites.net/api/generate)
